@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="form" (ngSubmit)="onClick()">
+                <div class="form-group col-md-6">
+                    <label for="sectionNav">Section Nav</label>
+                    <input type="text" id="sectionNav" formControlName="sectionNav" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="details">
+                        Section Details ::
+                    </label>
+                    <textarea id="details" formControlName="sectionDetails" class="form-control section-details-input"    rows="5"></textarea>
+                </div>
+                <div class="form-group col-md-6">
+                    <button type="submit" (click)="addSection()" class="btn btn-primary">Add Section</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-12 mt-4">
+        <p-accordion [multiple]="true">
+            <p-accordionTab *ngFor="let section of formSections">
+                <ng-template pTemplate="header">
+                    {{ section.header }}
+                </ng-template>
+                <ng-template pTemplate="content">
+                    {{ section.details }}
+                </ng-template>
+            </p-accordionTab>
+        </p-accordion>
+    </div>
+</div>
